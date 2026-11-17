@@ -2,7 +2,7 @@ import argparse, contextlib, json, os, subprocess, tempfile
 from pathlib import Path
 from datetime import date
 
-p=argparse.ArgumentParser();p.add_argument('--type',choices=['tech','market'],required=True);p.add_argument('--date',required=True);p.add_argument('--file',required=True);p.add_argument('--title',required=True);p.add_argument('--publish',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--type',choices=['tech','market','weekly'],required=True);p.add_argument('--date',required=True);p.add_argument('--file',required=True);p.add_argument('--title',required=True);p.add_argument('--publish',action='store_true');a=p.parse_args()
 date.fromisoformat(a.date)
 content=Path(a.file).read_text(encoding='utf-8-sig').strip()
 if content.startswith('【补发：今日早上发布，数据截至文内时间】'): content=content.split('\n',1)[1].strip()
